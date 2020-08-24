@@ -13,15 +13,15 @@ interface AuthState {
   user: User;
 }
 
-interface SingInCredentials {
+interface signInCredentials {
   email: string;
   password: string;
 }
 
 interface AuthContextData {
   user: User;
-  singIn(credentials: SingInCredentials): Promise<void>;
-  singOut(): void;
+  signIn(credentials: signInCredentials): Promise<void>;
+  signOut(): void;
   updateUser(user: User): void;
 }
 
@@ -40,7 +40,7 @@ const AuthProvider: React.FC = ({ children }) => {
     return {} as AuthState;
   });
 
-  const singIn = useCallback(async ({ email, password }) => {
+  const signIn = useCallback(async ({ email, password }) => {
     const response = await api.post('sessions', {
       email,
       password,
@@ -56,7 +56,7 @@ const AuthProvider: React.FC = ({ children }) => {
     setData({ token, user });
   }, []);
 
-  const singOut = useCallback(() => {
+  const signOut = useCallback(() => {
     localStorage.removeItem('@GoBarber:token');
     localStorage.removeItem('@GoBarber:user');
 
@@ -76,7 +76,7 @@ const AuthProvider: React.FC = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user: data.user, singIn, singOut, updateUser }}
+      value={{ user: data.user, signIn, signOut, updateUser }}
     >
       {children}
     </AuthContext.Provider>

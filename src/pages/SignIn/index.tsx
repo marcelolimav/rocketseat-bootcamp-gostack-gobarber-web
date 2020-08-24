@@ -25,7 +25,7 @@ const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const history = useHistory();
 
-  const { singIn } = useAuth();
+  const { signIn } = useAuth();
   const { addToast } = useToast();
 
   const handleSubmit = useCallback(
@@ -44,7 +44,7 @@ const SignIn: React.FC = () => {
           abortEarly: false,
         });
 
-        await singIn({
+        await signIn({
           email: data.email,
           password: data.password,
         });
@@ -64,7 +64,7 @@ const SignIn: React.FC = () => {
         });
       }
     },
-    [singIn, addToast, history],
+    [signIn, addToast, history],
   );
 
   return (

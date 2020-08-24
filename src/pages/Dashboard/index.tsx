@@ -40,7 +40,7 @@ interface Appointment {
 }
 
 const Dashboard: React.FC = () => {
-  const { singOut, user } = useAuth();
+  const { signOut, user } = useAuth();
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [currentMonth, setCurrentMonth] = useState(new Date());
 
@@ -148,7 +148,7 @@ const Dashboard: React.FC = () => {
               </Link>
             </div>
           </Profile>
-          <button type="button" onClick={singOut}>
+          <button type="button" onClick={signOut}>
             <FiPower />
           </button>
         </HeaderContent>
